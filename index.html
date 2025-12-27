@@ -1,163 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Tonight’s Cocktails</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --paper: #f6f1e7;
-      --ink: #2b2b2b;
-      --accent: #7a1f1f;
-      --border: #c2b8a3;
+<meta charset="UTF-8" />
+<title>Tonight's Cocktails</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+--paper: #e8dcc4;
+--ink: #2b2414;
+--accent: #7a1f1f;
+--border: #8b7355;
+--aged: #d4c5a9;
     }
-
-    * {
-      box-sizing: border-box;
+* {
+box-sizing: border-box;
     }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "IM Fell English", serif;
-      color: var(--ink);
-
-      /* Subtle paper texture */
-      background-color: var(--paper);
-      background-image:
-        linear-gradient(0deg, rgba(0,0,0,0.03), rgba(0,0,0,0.03)),
-        linear-gradient(90deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02)),
-        repeating-linear-gradient(
-          45deg,
-          rgba(0,0,0,0.015) 0,
-          rgba(0,0,0,0.015) 1px,
-          transparent 1px,
-          transparent 3px
+body {
+margin: 0;
+padding: 0;
+font-family: "IM Fell English", serif;
+color: var(--ink);
+background-color: #3a3a3a;
+background-image:
+radial-gradient(ellipse at center, #4a4a4a 0%, #2a2a2a 100%);
+min-height: 100vh;
+padding: 12px;
+    }
+.menu {
+max-width: 720px;
+margin: 0 auto;
+padding: 28px 20px;
+background: var(--paper);
+background-image:
+linear-gradient(0deg, rgba(139,115,85,0.03), rgba(139,115,85,0.03)),
+linear-gradient(90deg, rgba(139,115,85,0.02), rgba(139,115,85,0.02)),
+repeating-linear-gradient(
+45deg,
+rgba(0,0,0,0.02) 0,
+rgba(0,0,0,0.02) 1px,
+transparent 1px,
+transparent 4px
         );
+border: 3px double var(--border);
+box-shadow: 
+0 0 0 1px var(--aged),
+0 0 0 8px var(--paper),
+0 0 0 10px var(--border),
+0 20px 40px rgba(0,0,0,0.3),
+inset 0 0 80px rgba(139,115,85,0.1);
+position: relative;
     }
-
-    .menu {
-      max-width: 720px;
-      margin: 24px auto;
-      padding: 24px 18px;
-      background: rgba(255, 255, 255, 0.55);
-      border: 2px solid var(--border);
+.menu::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: 
+radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.15) 0%, transparent 50%),
+radial-gradient(ellipse at 80% 70%, rgba(139,115,85,0.12) 0%, transparent 50%),
+repeating-linear-gradient(
+0deg,
+transparent,
+transparent 2px,
+rgba(139,115,85,0.03) 2px,
+rgba(139,115,85,0.03) 4px
+        );
+pointer-events: none;
     }
-
-    @media (min-width: 600px) {
-      .menu {
-        margin: 40px auto;
-        padding: 36px 32px;
+@media (min-width: 600px) {
+body {
+padding: 24px;
+      }
+.menu {
+padding: 48px 44px;
       }
     }
-
-    .menu-header {
-      text-align: center;
-      margin-bottom: 32px;
+.ornament {
+text-align: center;
+color: var(--accent);
+font-size: 1.4rem;
+margin: 8px 0;
+opacity: 0.7;
     }
-
-    .menu-header h1 {
-      font-family: "IM Fell English", serif;
-      font-size: 2rem;
-      letter-spacing: 0.14em;
-      margin: 0;
-      text-transform: uppercase;
+.menu-header {
+text-align: center;
+margin-bottom: 28px;
+border-top: 2px solid var(--border);
+border-bottom: 2px solid var(--border);
+padding: 20px 0 16px;
+position: relative;
     }
-
-    @media (min-width: 600px) {
-      .menu-header h1 {
-        font-size: 2.5rem;
+.menu-header::before,
+.menu-header::after {
+content: '';
+position: absolute;
+left: 0;
+right: 0;
+height: 1px;
+background: var(--border);
+    }
+.menu-header::before {
+top: 4px;
+    }
+.menu-header::after {
+bottom: 4px;
+    }
+.menu-header h1 {
+font-family: "IM Fell English", serif;
+font-size: 2.2rem;
+letter-spacing: 0.18em;
+margin: 0 0 8px 0;
+text-transform: uppercase;
+font-weight: 400;
+text-shadow: 2px 2px 0 rgba(139,115,85,0.15);
+    }
+@media (min-width: 600px) {
+.menu-header h1 {
+font-size: 3rem;
       }
     }
-
-    .menu-header .subtitle {
-      margin-top: 10px;
-      font-style: italic;
-      font-size: 1rem;
+.menu-header .subtitle {
+margin-top: 12px;
+font-style: italic;
+font-size: 1rem;
+letter-spacing: 0.05em;
+opacity: 0.85;
     }
-
-    .divider {
-      margin: 28px auto;
-      width: 120px;
-      height: 1px;
-      background: var(--accent);
+.publication-info {
+text-align: center;
+font-size: 0.75rem;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+margin-bottom: 20px;
+opacity: 0.6;
     }
-
-    .cocktail {
-      margin-bottom: 32px;
-      text-align: center;
+.divider {
+margin: 32px auto;
+width: 140px;
+height: 2px;
+background: linear-gradient(to right, transparent, var(--accent), transparent);
+position: relative;
     }
-
-    .cocktail-name {
-      font-family: "IM Fell English", serif;
-      font-size: 1.3rem;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
-      text-transform: uppercase;
+.divider::before,
+.divider::after {
+content: '❦';
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+color: var(--accent);
+font-size: 1rem;
     }
-
-    @media (min-width: 600px) {
-      .cocktail-name {
-        font-size: 1.5rem;
+.divider::before {
+left: -20px;
+    }
+.divider::after {
+right: -20px;
+    }
+.cocktail {
+margin-bottom: 36px;
+text-align: center;
+padding: 20px 16px;
+border-left: 1px solid rgba(139,115,85,0.2);
+border-right: 1px solid rgba(139,115,85,0.2);
+position: relative;
+    }
+.cocktail::before {
+content: '◆';
+position: absolute;
+top: -8px;
+left: 50%;
+transform: translateX(-50%);
+color: var(--accent);
+font-size: 0.8rem;
+background: transparent;
+padding: 0 8px;
+    }
+.cocktail-name {
+font-family: "IM Fell English", serif;
+font-size: 1.5rem;
+letter-spacing: 0.12em;
+margin-bottom: 14px;
+text-transform: uppercase;
+font-weight: 400;
+border-bottom: 1px solid var(--border);
+padding-bottom: 8px;
+display: inline-block;
+    }
+@media (min-width: 600px) {
+.cocktail-name {
+font-size: 1.75rem;
       }
     }
-
-    .ingredients {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 1rem;
+.ingredients {
+list-style: none;
+padding: 0;
+margin: 12px 0 0 0;
+font-size: 1.05rem;
+line-height: 1.8;
     }
-
-    .ingredients li {
-      margin: 6px 0;
+.ingredients li {
+margin: 8px 0;
+position: relative;
     }
-
-    footer {
-      text-align: center;
-      margin-top: 36px;
-      font-size: 0.9rem;
-      font-style: italic;
-      opacity: 0.85;
+.ingredients li::before {
+content: '•';
+margin-right: 8px;
+color: var(--accent);
     }
-  </style>
+footer {
+text-align: center;
+margin-top: 40px;
+padding-top: 24px;
+border-top: 2px double var(--border);
+font-size: 0.95rem;
+font-style: italic;
+opacity: 0.75;
+letter-spacing: 0.05em;
+    }
+.corner-ornament {
+position: absolute;
+width: 40px;
+height: 40px;
+border: 2px solid var(--border);
+opacity: 0.4;
+    }
+.corner-ornament.top-left {
+top: 12px;
+left: 12px;
+border-right: none;
+border-bottom: none;
+    }
+.corner-ornament.top-right {
+top: 12px;
+right: 12px;
+border-left: none;
+border-bottom: none;
+    }
+.corner-ornament.bottom-left {
+bottom: 12px;
+left: 12px;
+border-right: none;
+border-top: none;
+    }
+.corner-ornament.bottom-right {
+bottom: 12px;
+right: 12px;
+border-left: none;
+border-top: none;
+    }
+</style>
 </head>
 <body>
-  <div class="menu">
-    <header class="menu-header">
-      <h1>Cocktail Menu</h1>
-      <div class="subtitle">Est. 2025 • No Names, No Questions</div>
-    </header>
+<div class="menu">
+<div class="corner-ornament top-left"></div>
+<div class="corner-ornament top-right"></div>
+<div class="corner-ornament bottom-left"></div>
+<div class="corner-ornament bottom-right"></div>
 
-    <div class="divider"></div>
+<div class="ornament">✦ ✦ ✦</div>
 
-    <!-- Cocktail Template -->
-    <section class="cocktail">
-      <div class="cocktail-name">Cocktail Name</div>
-      <ul class="ingredients">
-        <li>Ingredient One</li>
-        <li>Ingredient Two</li>
-        <li>Ingredient Three</li>
-      </ul>
-    </section>
+<header class="menu-header">
+<h1>Cocktail Menu</h1>
+<div class="subtitle">Est. 2025 • No Names, No Questions</div>
+</header>
 
-    <section class="cocktail">
-      <div class="cocktail-name">Cocktail Name</div>
-      <ul class="ingredients">
-        <li>Ingredient One</li>
-        <li>Ingredient Two</li>
-        <li>Ingredient Three</li>
-      </ul>
-    </section>
-    <!-- Duplicate cocktail sections as needed -->
+<div class="ornament">✦ ✦ ✦</div>
 
-    <footer>
+<div class="divider"></div>
+
+<section class="cocktail">
+<div class="cocktail-name">Cocktail Name</div>
+<ul class="ingredients">
+<li>Ingredient One</li>
+<li>Ingredient Two</li>
+<li>Ingredient Three</li>
+</ul>
+</section>
+
+<section class="cocktail">
+<div class="cocktail-name">Cocktail Name</div>
+<ul class="ingredients">
+<li>Ingredient One</li>
+<li>Ingredient Two</li>
+<li>Ingredient Three</li>
+</ul>
+</section>
+
+<footer>
       Enjoy responsibly. Speak easy.
-    </footer>
-  </div>
+</footer>
+</div>
 </body>
 </html>
